@@ -1,29 +1,25 @@
-import os
-import openai
-from dotenv import load_dotenv
-from langchain.embeddings import OpenAIEmbeddings
-from langchain.vectorstores import FAISS
-from langchain.docstore.document import Document
-from langchain.chains import RetrievalQA
-from langchain.chat_models import ChatOpenAI
+import google.generativeai as genai
 
-load_dotenv()
-openai.api_key = os.getenv("OPENAI_API_KEY")
+# 🔐 Set your Gemini API key directly here
+genai.configure(api_key="AIzaSyBI0YYq-qAVdsx5i08ox-dciaYb_vWgC2A")  # Replace with your Gemini key
 
-# Keep FAISS index in memory
-db = None
+model = genai.GenerativeModel('gemini-pro')
 
-def process_query(query, chunks):
-    global db
-    if db is None:
-        docs = [Document(page_content=chunk) for chunk in chunks]
-        embedding = OpenAIEmbeddings()
-        db = FAISS.from_documents(docs, embedding)
+# Keep chunks in memory
+pdf_text_chunks = []
 
-    retriever = db.as_retriever()
-    qa = RetrievalQA.from_chain_type(
-        llm=ChatOpenAI(model_name="gpt-4o"),
-        chain_type="stuff",
-        retriever=retriever
-    )
-    return qa.run(query)
+def set_chunks(chunks):
+    global pdf_text_chunks
+    pdf_text_chunks = chunks
+
+def process_query(query):
+    if not pdf_text_chunks:
+        return "No PDF uploaded yet."
+
+    # Join all chunks as context (for now, just simple concatenation)
+    context = "\n".join(pdf_text_chunks)
+
+    prompt = f"""You are an assistant. Here is the document content:\n{context}\n\nAnswer this question:\n{query}"""
+
+    response = model.generate_content(prompt)
+    return response.text
