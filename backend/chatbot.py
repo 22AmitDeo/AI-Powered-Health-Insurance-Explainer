@@ -1,7 +1,7 @@
 # chatbot.py
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyBI0YYq-qAVdsx5i08ox-dciaYb_vWgC2A")  # Replace with actual Gemini API key
+genai.configure(api_key="")  # Replace with actual Gemini API key
 
 # Global list to store PDF chunks
 pdf_text_chunks = []
@@ -18,7 +18,7 @@ def process_query(query: str):
     prompt = "\n".join(pdf_text_chunks) + f"\n\nUser query: {query}"
 
     try:
-        model = genai.GenerativeModel('gemini-pro')
+        model = genai.GenerativeModel('gemini-1.5-flash')
         response = model.generate_content(prompt)
         return response.text
     except Exception as e:
