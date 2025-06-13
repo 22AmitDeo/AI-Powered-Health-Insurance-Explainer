@@ -1,25 +1,25 @@
+# chatbot.py
 import google.generativeai as genai
 
-# 🔐 Set your Gemini API key directly here
-genai.configure(api_key="AIzaSyBI0YYq-qAVdsx5i08ox-dciaYb_vWgC2A")  # Replace with your Gemini key
+genai.configure(api_key="AIzaSyBI0YYq-qAVdsx5i08ox-dciaYb_vWgC2A")  # Replace with actual Gemini API key
 
-model = genai.GenerativeModel('gemini-pro')
-
-# Keep chunks in memory
+# Global list to store PDF chunks
 pdf_text_chunks = []
 
 def set_chunks(chunks):
-    global pdf_text_chunks
-    pdf_text_chunks = chunks
+    """Set the PDF text chunks globally."""
+    pdf_text_chunks.clear()
+    pdf_text_chunks.extend(chunks)
 
-def process_query(query):
+def process_query(query: str):
     if not pdf_text_chunks:
-        return "No PDF uploaded yet."
+        return "No PDF content found. Please upload a PDF first."
 
-    # Join all chunks as context (for now, just simple concatenation)
-    context = "\n".join(pdf_text_chunks)
+    prompt = "\n".join(pdf_text_chunks) + f"\n\nUser query: {query}"
 
-    prompt = f"""You are an assistant. Here is the document content:\n{context}\n\nAnswer this question:\n{query}"""
-
-    response = model.generate_content(prompt)
-    return response.text
+    try:
+        model = genai.GenerativeModel('gemini-pro')
+        response = model.generate_content(prompt)
+        return response.text
+    except Exception as e:
+        return f"Error generating response: {e}"

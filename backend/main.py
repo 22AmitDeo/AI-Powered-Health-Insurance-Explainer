@@ -1,3 +1,4 @@
+# main.py
 from fastapi import FastAPI, UploadFile, Form
 from fastapi.middleware.cors import CORSMiddleware
 from pdf_parser import extract_text_from_pdf
@@ -5,7 +6,7 @@ from chatbot import process_query, set_chunks
 
 app = FastAPI()
 
-# Enable CORS if you plan to connect frontend later
+# CORS (for frontend)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],
@@ -17,7 +18,7 @@ app.add_middleware(
 async def upload_pdf(file: UploadFile):
     content = await file.read()
     chunks = extract_text_from_pdf(content)
-    set_chunks(chunks)
+    set_chunks(chunks)  # ✅ Now valid and updates shared list
     return {"message": "PDF processed", "chunks": len(chunks)}
 
 @app.post("/chat")
