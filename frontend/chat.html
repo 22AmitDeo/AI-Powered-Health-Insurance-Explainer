@@ -1,0 +1,56 @@
+<!-- chat.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chat with InsuraAI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">InsuraAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="section fade-in">
+        <div class="container">
+            <h2>Ask Anything About Your Insurance</h2>
+            <form id="chatForm">
+                <textarea id="userQuery" rows="4" placeholder="Type your question..." required></textarea>
+                <button type="submit" class="hero-cta" style="margin-top: 10px;"><span>Ask</span></button>
+            </form>
+            <div id="chatResponse" style="margin-top: 30px; font-size: 18px;"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InsuraAI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="chat.js"></script>
+</body>
+
+</html>

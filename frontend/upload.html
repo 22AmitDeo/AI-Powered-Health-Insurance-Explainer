@@ -1,0 +1,56 @@
+<!-- upload.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Upload PDF | InsuraAI</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <div class="floating-shape shape1"></div>
+    <div class="floating-shape shape2"></div>
+    <div class="floating-shape shape3"></div>
+
+    <header>
+        <nav class="container">
+            <a href="index.html" class="logo">InsuraAI</a>
+            <ul class="nav-links">
+                <li><a href="index.html#features">Features</a></li>
+                <li><a href="index.html#about">About</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="section fade-in">
+        <div class="container">
+            <h2>Upload Your Insurance PDF</h2>
+            <form id="uploadForm">
+                <input type="file" id="pdfFile" accept=".pdf" required />
+                <button type="submit" class="hero-cta" style="margin-top: 20px;"><span>Upload & Continue</span></button>
+            </form>
+            <p id="uploadStatus" style="margin-top: 20px;"></p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy</a>
+                <a href="#">Terms</a>
+                <a href="#">Support</a>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 InsuraAI</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="upload.js"></script>
+</body>
+
+</html>
