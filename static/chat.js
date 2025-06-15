@@ -14,7 +14,7 @@ document.getElementById("chatForm").addEventListener("submit", async (e) => {
     formData.append("query", question);
 
     try {
-        const response = await fetch("http://localhost:8000/chat", {
+        const response = await fetch("/chat", {
             method: "POST",
             body: formData,
         });
