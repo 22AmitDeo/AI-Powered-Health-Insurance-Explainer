@@ -1,7 +1,7 @@
 # chatbot.py
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyC8exq8WOKlnW2Ore1rTbld7Z7F107wy_E")  # Replace with actual Gemini API key
+genai.configure(api_key="AIzaSyC8exq8WOKlnW2Ore1rTbld7Z7F107wy_E")  
 
 # Global list to store PDF chunks
 pdf_text_chunks = []
