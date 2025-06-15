@@ -1,7 +1,7 @@
 # chatbot.py
 import google.generativeai as genai
 
-genai.configure(api_key="AIzaSyC8exq8WOKlnW2Ore1rTbld7Z7F107wy_E")  
+genai.configure(api_key="")  
 
 # Global list to store PDF chunks
 pdf_text_chunks = []
