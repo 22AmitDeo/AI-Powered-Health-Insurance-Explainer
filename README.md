@@ -14,7 +14,7 @@ InsuraAI is a web-based tool that simplifies complex health insurance documents 
 ## 📄 Sample PDF
 
 To help you test the app quickly, we've included a **sample health insurance PDF** in this repository:  
-`/sample-data/sample_health_insurance.pdf`
+`/sample_health_insurance.pdf`
 
 You can upload it to see how the AI explains policy clauses, benefits, exclusions, and more.
 
